@@ -4,6 +4,9 @@ FROM docker.io/node:bookworm
 # get our image and video processing dependencies
 RUN apt-get update && apt-get install -y ffmpeg exiftool
 
+RUN mkdir -p /takeout /output /error \
+    && chmod a+rwx /takeout /output /error
+
 COPY . /app
 
 WORKDIR /app
